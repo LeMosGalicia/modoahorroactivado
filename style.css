@@ -1,1 +1,130 @@
+/* Importa la fuente Roboto de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+:root {
+    --primary-color: #28a745; /* Verde para el título y elementos clave */
+    --secondary-color: #218838; /* Verde más oscuro para hover */
+    --background-color: #f8f9fa; /* Fondo claro */
+    --text-color: #343a40; /* Texto oscuro */
+    --card-background: #ffffff; /* Fondo de las tarjetas */
+    --border-color: #e2e6ea; /* Borde suave */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra suave */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el footer esté abajo */
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 20px;
+    flex-grow: 1; /* Permite que el contenido crezca y empuje el footer */
+}
+
+.section-card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.section-card h2 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.section-card p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.recommendations ul {
+    list-style: none; /* Elimina los puntos por defecto */
+    padding: 0;
+}
+
+.recommendations li {
+    background-color: #e9f7ef; /* Un verde claro para los ítems */
+    border-left: 5px solid var(--primary-color);
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: transform 0.2s ease-in-out;
+}
+
+.recommendations li:hover {
+    transform: translateX(5px); /* Pequeño efecto al pasar el ratón */
+    background-color: #d4edda; /* Un poco más oscuro al pasar el ratón */
+}
+
+.recommendations li strong {
+    color: var(--secondary-color);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 0.9em;
+    box-shadow: 0 -4px 8px var(--shadow-color);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+    .section-card {
+        padding: 20px;
+    }
+    .section-card h2 {
+        font-size: 1.5em;
+    }
+    .section-card p, .recommendations li {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    .container {
+        margin: 10px auto;
+        padding: 0 10px;
+    }
+}
