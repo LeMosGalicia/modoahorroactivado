@@ -1,130 +1,122 @@
-/* Importa la fuente Roboto de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-:root {
-    --primary-color: #28a745; /* Verde para el título y elementos clave */
-    --secondary-color: #218838; /* Verde más oscuro para hover */
-    --background-color: #f8f9fa; /* Fondo claro */
-    --text-color: #343a40; /* Texto oscuro */
-    --card-background: #ffffff; /* Fondo de las tarjetas */
-    --border-color: #e2e6ea; /* Borde suave */
-    --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra suave */
-}
-
+/* Estilos generales del cuerpo de la página */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: -webkit-linear-gradient(135deg, #6dd5ed, #2193b0);
+    color: #333;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Asegura que el footer esté abajo */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
+/* Contenedor principal para centrar el contenido */
+.container {
+    max-width: 800px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo del encabezado y título principal */
 header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 2rem 0;
     text-align: center;
-    box-shadow: 0 4px 8px var(--shadow-color);
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2.8em;
+    font-size: 3em;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    color: transparent;
+    background: linear-gradient(45deg, #2a2a72, #009ffd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: fadeInDown 1s ease-out;
 }
 
-.container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 0 20px;
-    flex-grow: 1; /* Permite que el contenido crezca y empuje el footer */
+/* Animación para el título */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.section-card {
-    background-color: var(--card-background);
-    border-radius: 10px;
-    box-shadow: 0 2px 10px var(--shadow-color);
+/* Estilo de las tarjetas de contenido */
+.card {
+    background-color: #ffffff;
     padding: 30px;
-    margin-bottom: 30px;
-    border: 1px solid var(--border-color);
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.section-card h2 {
-    color: var(--primary-color);
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.card h2 {
     font-size: 1.8em;
+    font-weight: 600;
+    color: #333;
     margin-top: 0;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 3px solid #6dd5ed;
     padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.section-card p {
+.card h3 {
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #555;
     margin-bottom: 15px;
-    font-size: 1.1em;
 }
 
+.card p, .card li {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #444;
+}
+
+/* Estilo específico para la sección de recomendaciones */
 .recommendations ul {
-    list-style: none; /* Elimina los puntos por defecto */
+    list-style: none;
     padding: 0;
 }
 
 .recommendations li {
-    background-color: #e9f7ef; /* Un verde claro para los ítems */
-    border-left: 5px solid var(--primary-color);
+    padding-left: 30px;
+    position: relative;
     margin-bottom: 15px;
-    padding: 15px 20px;
-    border-radius: 5px;
-    font-size: 1.1em;
-    transition: transform 0.2s ease-in-out;
 }
 
-.recommendations li:hover {
-    transform: translateX(5px); /* Pequeño efecto al pasar el ratón */
-    background-color: #d4edda; /* Un poco más oscuro al pasar el ratón */
+.recommendations li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    color: #2193b0;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
-.recommendations li strong {
-    color: var(--secondary-color);
-}
-
+/* Estilo del pie de página */
 footer {
     text-align: center;
-    padding: 20px;
     margin-top: 40px;
-    background-color: var(--primary-color);
-    color: white;
     font-size: 0.9em;
-    box-shadow: 0 -4px 8px var(--shadow-color);
-}
-
-/* Responsiveness */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2.2em;
-    }
-    .section-card {
-        padding: 20px;
-    }
-    .section-card h2 {
-        font-size: 1.5em;
-    }
-    .section-card p, .recommendations li {
-        font-size: 1em;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 1.8em;
-    }
-    .container {
-        margin: 10px auto;
-        padding: 0 10px;
-    }
+    color: #555;
 }
