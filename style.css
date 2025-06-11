@@ -1,209 +1,193 @@
-/* --- CONFIGURACIÓN GENERAL Y VARIABLES DE COLOR --- */
+/* --- CONFIGURACIÓN Y ESTÉTICA "MUSK" --- */
 :root {
-    --primary-color: #004d40; /* Verde azulado oscuro */
-    --secondary-color: #00796b; /* Verde menta */
-    --accent-color: #80cbc4; /* Menta claro */
-    --background-color: #e0f2f1; /* Fondo muy claro */
-    --text-color: #212121; /* Negro suave */
-    --card-bg: #ffffff;
+    --background-color: #121212;
+    --card-color: #1E1E1E;
+    --text-color: #EAEAEA;
+    --text-secondary-color: #888888;
+    --accent-color: #00BFFF; /* DeepSkyBlue */
+    --border-color: #333333;
+    
+    --font-primary: 'Exo 2', sans-serif;
+    --font-secondary: 'Roboto Mono', monospace;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
+    font-family: var(--font-secondary);
     margin: 0;
     padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
 .container {
-    max-width: 850px;
-    width: 100%;
-    animation: fadeIn 1.5s ease-out;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* --- ENCABEZADO --- */
+/* --- ENCABEZADO Y TÍTULO "GLITCH" --- */
 header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-header .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+.glitch {
+    font-family: var(--font-primary);
+    font-size: 4em;
+    font-weight: 700;
+    position: relative;
+    color: var(--text-color);
+    text-transform: uppercase;
 }
-
-header .logo .fa-leaf {
-    font-size: 2.5em;
-    color: var(--secondary-color);
+.glitch:before, .glitch:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-color);
+    overflow: hidden;
 }
-
-header h1 {
-    font-family: 'Teko', sans-serif;
-    font-size: 4.5em;
-    color: var(--primary-color);
-    margin: 0;
-    letter-spacing: 2px;
+.glitch:before {
+    left: 2px;
+    text-shadow: -1px 0 red;
+    animation: glitch-anim-1 2s infinite linear reverse;
 }
+.glitch:after {
+    left: -2px;
+    text-shadow: -1px 0 var(--accent-color);
+    animation: glitch-anim-2 2s infinite linear reverse;
+}
+@keyframes glitch-anim-1 { 0%, 100% { clip-path: inset(0 0 95% 0); } 25% { clip-path: inset(50% 0 20% 0); } 50% { clip-path: inset(20% 0 60% 0); } 75% { clip-path: inset(80% 0 5% 0); } }
+@keyframes glitch-anim-2 { 0%, 100% { clip-path: inset(95% 0 0 0); } 25% { clip-path: inset(10% 0 80% 0); } 50% { clip-path: inset(60% 0 10% 0); } 75% { clip-path: inset(5% 0 90% 0); } }
 
 header .subtitle {
-    font-size: 1.2em;
-    color: #424242;
-    margin-top: 10px;
+    font-size: 1.1em;
+    color: var(--text-secondary-color);
+    letter-spacing: 2px;
 }
 
 /* --- TARJETAS DE CONTENIDO --- */
 .card {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 35px;
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
     margin-bottom: 30px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e0e0e0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
-
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 77, 64, 0.12);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
 }
 
 .card h2 {
-    font-family: 'Teko', sans-serif;
-    font-size: 2.8em;
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 25px;
-    border-bottom: 3px solid var(--accent-color);
-    padding-bottom: 10px;
+    font-family: var(--font-primary);
+    font-size: 2.2em;
+    margin: 0 0 25px 0;
+    color: var(--text-color);
+}
+.card h3 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 1.2em;
+    margin: 20px 0 10px 0;
+    color: var(--accent-color);
+}
+.card p {
+    font-size: 1em;
+    line-height: 1.8;
+    color: var(--text-secondary-color);
+}
+.accent-char {
+    color: var(--accent-color);
 }
 
-/* --- CARRUSEL DE IMÁGENES --- */
+/* --- CARRUSEL AUTOMÁTICO --- */
 .slideshow-container {
     position: relative;
-    border-radius: 12px;
+    border-radius: 4px;
     overflow: hidden;
-    height: 400px;
     margin-bottom: 20px;
+    height: 450px;
 }
-
-.slide img {
+.slide {
+    display: none;
     width: 100%;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
-    vertical-align: middle;
+    animation: fadeIn 1.5s;
 }
 
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from { opacity: .4 } 
-    to { opacity: 1 }
-}
-
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    transition: 0.3s ease;
-    border-radius: 0 3px 3px 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    user-select: none;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0, 77, 64, 0.8);
-}
-
-/* --- RECOMENDACIONES DEL USUARIO --- */
-.user-recommendations .recommendation {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.icon-circle {
-    font-size: 1.5em;
-    color: var(--card-bg);
-    background: var(--secondary-color);
-    border-radius: 50%;
-    min-width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.user-recommendations h3 {
-    margin: 0 0 5px 0;
-    font-size: 1.4em;
-    color: var(--primary-color);
-}
-
-/* --- SECCIÓN RECOMENDACIONES IA --- */
-.ai-section {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-}
-
-.ai-section h2 {
-    color: white;
-    border-bottom: 3px solid var(--accent-color);
-}
-
-.ai-recommendations {
+/* --- RECOMENDACIONES DEL USUARIO CON IMAGEN --- */
+.recommendation-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: 30px;
 }
+.recommendation-item {
+    background: #252525;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+.recommendation-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    opacity: 0.8;
+}
+.recommendation-text {
+    padding: 20px;
+}
 
+/* --- SECCIÓN IA --- */
+.ai-section {
+    border-color: var(--accent-color);
+}
+.ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
 .ai-item {
     text-align: center;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
-
+.ai-item:hover {
+    background-color: #2a2a2a;
+}
 .ai-item i {
-    font-size: 3em;
-    margin-bottom: 15px;
+    font-size: 2.5em;
     color: var(--accent-color);
-    --fa-animation-duration: 2s; /* Ralentiza la animación de latido */
+    margin-bottom: 15px;
 }
-
 .ai-item h3 {
-    font-family: 'Teko', sans-serif;
-    font-size: 2em;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
 }
 
 /* --- PIE DE PÁGINA --- */
 footer {
     text-align: center;
-    margin-top: 20px;
-    color: #555;
+    padding: 20px;
+    color: var(--text-secondary-color);
+    border-top: 1px solid var(--border-color);
     font-size: 0.9em;
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 600px) {
+    .glitch { font-size: 2.5em; }
+    .card h2 { font-size: 1.8em; }
 }
