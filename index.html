@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ModoAhorroActivado // Directive_01</title>
+    <title>ModoAhorroActivado // Directive_02</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
                 <h2><span class="accent-char">></span> La importancia de usar el transporte público o la bicicleta.</h2>
                 
                 <div class="slideshow-container">
-                    <img class="slide" src="https://images.pexels.com/photos/1846422/pexels-photo-1846422.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Autobús eléctrico futurista en una ciudad de noche.">
+                    <img class="slide" src="https://images.pexels.com/photos/7594348/pexels-photo-7594348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Autobús futurista de diseño minimalista.">
                     <img class="slide" src="https://images.pexels.com/photos/2444852/pexels-photo-2444852.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Tren de alta velocidad desenfocado por el movimiento.">
                     <img class="slide" src="https://images.pexels.com/photos/390051/pexels-photo-390051.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Interior moderno y vacío de un tranvía.">
                 </div>
@@ -57,38 +57,39 @@
                 </div>
             </section>
             
-            <section class="card ai-section">
-                <h2><span class="accent-char">></span> Recomendaciones extra hechas por IA</h2>
-                <div class="ai-grid">
-                    <div class="ai-item">
-                        <i class="fas fa-network-wired"></i>
-                        <h3>Análisis Predictivo de Ruta</h3>
-                        <p>Utiliza algoritmos para calcular la ruta más eficiente en tiempo y energía, combinando múltiples transportes.</p>
+            <section class="card terminal-section">
+                <h2><span class="accent-char">></span> Consola de Análisis IA</h2>
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="t-btn close"></span>
+                            <span class="t-btn min"></span>
+                            <span class="t-btn max"></span>
+                        </div>
+                        <span>root@ia_core: /analysis</span>
                     </div>
-                    <div class="ai-item">
-                        <i class="fas fa-charging-station"></i>
-                        <h3>Red de Carga Inteligente</h3>
-                        <p>Apoya la creación de redes de carga para vehículos eléctricos (bicis, patinetes) alimentadas por energía solar en puntos clave.</p>
+                    <div class="terminal-body" id="terminalBody">
+                        <p>Esperando comando...</p>
+                        <span class="cursor"></span>
                     </div>
-                    <div class="ai-item">
-                        <i class="fas fa-cubes"></i>
-                        <h3>Integración Multimodal</h3>
-                        <p>Fomenta plataformas que integren en una sola app el pago y reserva de bicis, autobuses y trenes para una experiencia sin fisuras.</p>
-                    </div>
+                </div>
+                <div class="terminal-commands">
+                    <button onclick="runCommand('impacto')">> ./analizar_impacto_co2</button>
+                    <button onclick="runCommand('futuro')">> ./ver_tecnologias_futuras</button>
+                    <button onclick="runCommand('rutas')">> ./calcular_ruta_optima</button>
                 </div>
             </section>
         </main>
         
         <footer>
-            <p>// Fin de la transmisión. Proyecto de Física y Química. Lugo, 11 de junio de 2025.</p>
+            <p>// Fin de la transmisión. Proyecto de Física y Química. 11 de junio de 2025.</p>
         </footer>
     </div>
 
     <script>
+        // --- SCRIPT PARA EL CARRUSEL AUTOMÁTICO ---
         let slideIndex = 0;
-        let slideInterval;
-
-        function showSlides() {
+        function startSlideshow() {
             const slides = document.querySelectorAll(".slideshow-container .slide");
             slides.forEach(slide => slide.style.display = "none");
             slideIndex++;
@@ -97,16 +98,56 @@
             }
             slides[slideIndex - 1].style.display = "block";
         }
+        document.addEventListener("DOMContentLoaded", () => {
+            startSlideshow();
+            setInterval(startSlideshow, 4000);
+        });
 
-        function startSlideshow() {
-            // Inicia el carrusel
-            showSlides(); 
-            // Cambia de imagen cada 4 segundos (4000 milisegundos)
-            slideInterval = setInterval(showSlides, 4000); 
-        }
+        // --- SCRIPT PARA LA TERMINAL INTERACTIVA ---
+        const terminalBody = document.getElementById('terminalBody');
+        const commands = {
+            impacto: [
+                "INICIANDO ANÁLISIS DE IMPACTO DE CARBONO...",
+                " ",
+                "COMPARATIVA ANUAL (1 persona, 10km diarios):",
+                "------------------------------------------",
+                "VEHÍCULO PRIVADO (Gasolina): ~1.200 kg CO2",
+                "TRANSPORTE PÚBLICO (Autobús): ~150 kg CO2",
+                "BICICLETA: 0 kg CO2",
+                " ",
+                "CONCLUSIÓN: El transporte público reduce la huella de carbono individual en un <span class='accent-char'>87.5%</span>.",
+                "ANÁLISIS COMPLETADO."
+            ],
+            futuro: [
+                "ESCANEANDO HORIZONTE TECNOLÓGICO...",
+                " ",
+                "TECNOLOGÍAS EMERGENTES:",
+                "------------------------",
+                "1. Hyperloop: Cápsulas levitantes en tubos de vacío para viajes interurbanos a +1000 km/h.",
+                "2. Vehículos Autónomos Compartidos (Pods): Flotas de vehículos eléctricos sin conductor que optimizan rutas en tiempo real.",
+                "3. Pavimentos Cinéticos: Carreteras que generan electricidad a partir de la presión y vibración del tráfico.",
+                " ",
+                "ESTADO: En desarrollo activo. Potencial disruptivo: <span class='accent-char'>EXTREMO</span>."
+            ],
+            rutas: [
+                "CALCULANDO RUTA ÓPTIMA: [ORIGEN] > [DESTINO]",
+                " ",
+                "PROCESANDO DATOS DE TRÁFICO, METEOROLOGÍA Y COSTE ENERGÉTICO...",
+                " ",
+                "RUTA RECOMENDADA:",
+                "------------------",
+                "1. [CAMINAR] 400m hasta la parada de bus 'Plaza Central'.",
+                "2. [AUTOBÚS LÍNEA 5] 12 paradas.",
+                "3. [BICICLETA COMPARTIDA] 1.2km desde 'Av. del Futuro' hasta destino.",
+                " ",
+                "TIEMPO ESTIMADO: 22 minutos.",
+                "COSTE ENERGÉTICO: <span class='accent-char'>92% inferior</span> a ruta en vehículo privado."
+            ]
+        };
 
-        // Inicia el carrusel cuando la página ha cargado
-        document.addEventListener("DOMContentLoaded", startSlideshow);
-    </script>
-</body>
-</html>
+        let isTyping = false;
+
+        function runCommand(cmd) {
+            if (isTyping) return;
+            isTyping = true;
+            terminalBody.
