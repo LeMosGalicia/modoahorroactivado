@@ -5,45 +5,40 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 20px;
-    color: #1e2a3a; /* Un azul oscuro para el texto, mejora la legibilidad */
+    color: #1e2a3a;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    
-    /* El degradado animado */
     background: linear-gradient(-45deg, #2ecc71, #1abc9c, #3498db, #9b59b6);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
 }
 
-/* Keyframes para la animación del fondo */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-
 /* --- CONTENEDOR PRINCIPAL EFECTO CRISTAL (GLASSMORPHISM) --- */
 .container {
     max-width: 800px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.7); /* Fondo blanco semitransparente */
+    background: rgba(255, 255, 255, 0.7);
     padding: 40px;
-    border-radius: 20px; /* Bordes más redondeados */
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25); /* Sombra más pronunciada */
-    backdrop-filter: blur(10px); /* El efecto de desenfoque del cristal */
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    animation: fadeIn 1s ease-in-out; /* Animación de entrada */
+    animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 
 /* --- ENCABEZADO Y TÍTULO PRINCIPAL --- */
 header {
@@ -52,31 +47,30 @@ header {
 }
 
 header h1 {
-    font-size: 3.5em; /* Un poco más grande */
+    font-size: 3.5em;
     font-weight: 700;
     color: transparent;
-    /* Degradado para el texto del título */
     background: linear-gradient(45deg, #2c3e50, #34495e);
     -webkit-background-clip: text;
     background-clip: text;
     padding-bottom: 10px;
 }
 
-
 /* --- TARJETAS DE CONTENIDO CON ESTILO MEJORADO --- */
 .card {
-    background-color: rgba(255, 255, 255, 0.85); /* Un poco más opaco para leer bien */
+    background-color: rgba(255, 255, 255, 0.85);
     padding: 30px;
     margin-bottom: 25px;
     border-radius: 15px;
-    border-left: 5px solid #2ecc71; /* Un borde izquierdo de color para destacar */
+    border-left: 5px solid #2ecc71;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Importante para que la imagen no se salga de los bordes redondeados */
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.02); /* Efecto de elevación */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Sombra más intensa al pasar el ratón */
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 .card h2 {
@@ -87,19 +81,20 @@ header h1 {
     margin-bottom: 20px;
 }
 
-.card h3 {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #3498db;
-    margin-bottom: 15px;
-}
-
 .card p, .card li {
     font-size: 1.1em;
-    line-height: 1.8; /* Más espacio entre líneas */
+    line-height: 1.8;
     color: #34495e;
 }
 
+/* --- ESTILOS PARA LAS IMÁGENES AÑADIDAS --- */
+.card img {
+    width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+    height: auto; /* La altura se ajusta automáticamente */
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    margin-bottom: 20px; /* Espacio entre la imagen y el texto de abajo */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra sutil para la imagen */
+}
 
 /* --- SECCIÓN DE RECOMENDACIONES CON ICONOS --- */
 .recommendations ul {
@@ -108,18 +103,16 @@ header h1 {
 }
 
 .recommendations li {
-    padding-left: 45px; /* Más espacio para el icono */
+    padding-left: 45px;
     position: relative;
     margin-bottom: 20px;
 }
 
-/* Iconos para las recomendaciones */
 .recommendations li::before {
-    font-family: "Font Awesome 5 Free"; /* (Opcional, si quisieras usar iconos) */
-    content: '✔'; /* Mantenemos el tick, pero más estilizado */
+    content: '✔';
     position: absolute;
     left: 0;
-    top: 0px;
+    top: 5px;
     color: #fff;
     background: #2ecc71;
     border-radius: 50%;
@@ -133,11 +126,9 @@ header h1 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Le damos otro color al icono del autobús */
 .recommendations li:last-child::before {
     background: #3498db;
 }
-
 
 /* --- PIE DE PÁGINA --- */
 footer {
