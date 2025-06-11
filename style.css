@@ -21,7 +21,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* --- CONTENEDOR PRINCIPAL EFECTO CRISTAL (GLASSMORPHISM) --- */
+/* --- CONTENEDOR PRINCIPAL EFECTO CRISTAL --- */
 .container {
     max-width: 800px;
     width: 100%;
@@ -56,7 +56,7 @@ header h1 {
     padding-bottom: 10px;
 }
 
-/* --- TARJETAS DE CONTENIDO CON ESTILO MEJORADO --- */
+/* --- TARJETAS DE CONTENIDO --- */
 .card {
     background-color: rgba(255, 255, 255, 0.85);
     padding: 30px;
@@ -65,7 +65,7 @@ header h1 {
     border-left: 5px solid #2ecc71;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden; /* Importante para que la imagen no se salga de los bordes redondeados */
+    overflow: hidden; 
 }
 
 .card:hover {
@@ -87,16 +87,56 @@ header h1 {
     color: #34495e;
 }
 
-/* --- ESTILOS PARA LAS IMÁGENES AÑADIDAS --- */
+/* --- ESTILOS PARA LA IMAGEN ÚNICA --- */
 .card img {
-    width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
-    height: auto; /* La altura se ajusta automáticamente */
-    border-radius: 10px; /* Bordes redondeados para la imagen */
-    margin-bottom: 20px; /* Espacio entre la imagen y el texto de abajo */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra sutil para la imagen */
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* --- SECCIÓN DE RECOMENDACIONES CON ICONOS --- */
+/* --- ESTILOS PARA EL CARRUSEL (SLIDESHOW) --- */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Altura fija para el carrusel */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.slideshow-container .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra todo el espacio sin deformarse */
+    opacity: 0;
+    animation: fadeAnimation 15s infinite; /* 15s de duración total para 3 imágenes */
+}
+
+/* Retraso de la animación para cada imagen */
+.slideshow-container .slide:nth-child(2) {
+    animation-delay: 5s; /* Empieza cuando la primera termina */
+}
+.slideshow-container .slide:nth-child(3) {
+    animation-delay: 10s; /* Empieza cuando la segunda termina */
+}
+
+/* Animación de fundido (fade) */
+@keyframes fadeAnimation {
+    0% { opacity: 0; }
+    15% { opacity: 1; } /* Aparece */
+    33% { opacity: 1; } /* Se mantiene visible */
+    48% { opacity: 0; } /* Se desvanece */
+    100% { opacity: 0; }
+}
+
+
+/* --- SECCIÓN DE RECOMENDACIONES --- */
 .recommendations ul {
     list-style: none;
     padding: 0;
