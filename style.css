@@ -1,122 +1,150 @@
-/* Estilos generales del cuerpo de la página */
+/* --- ESTILOS GENERALES Y FONDO ANIMADO --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 20px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    background: -webkit-linear-gradient(135deg, #6dd5ed, #2193b0);
-    color: #333;
+    color: #1e2a3a; /* Un azul oscuro para el texto, mejora la legibilidad */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    
+    /* El degradado animado */
+    background: linear-gradient(-45deg, #2ecc71, #1abc9c, #3498db, #9b59b6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
 }
 
-/* Contenedor principal para centrar el contenido */
+/* Keyframes para la animación del fondo */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* --- CONTENEDOR PRINCIPAL EFECTO CRISTAL (GLASSMORPHISM) --- */
 .container {
     max-width: 800px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.7); /* Fondo blanco semitransparente */
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px; /* Bordes más redondeados */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25); /* Sombra más pronunciada */
+    backdrop-filter: blur(10px); /* El efecto de desenfoque del cristal */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: fadeIn 1s ease-in-out; /* Animación de entrada */
 }
 
-/* Estilo del encabezado y título principal */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- ENCABEZADO Y TÍTULO PRINCIPAL --- */
 header {
     text-align: center;
     margin-bottom: 40px;
 }
 
 header h1 {
-    font-size: 3em;
+    font-size: 3.5em; /* Un poco más grande */
     font-weight: 700;
     color: transparent;
-    background: linear-gradient(45deg, #2a2a72, #009ffd);
+    /* Degradado para el texto del título */
+    background: linear-gradient(45deg, #2c3e50, #34495e);
     -webkit-background-clip: text;
     background-clip: text;
-    animation: fadeInDown 1s ease-out;
+    padding-bottom: 10px;
 }
 
-/* Animación para el título */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-/* Estilo de las tarjetas de contenido */
+/* --- TARJETAS DE CONTENIDO CON ESTILO MEJORADO --- */
 .card {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.85); /* Un poco más opaco para leer bien */
     padding: 30px;
     margin-bottom: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    border-left: 5px solid #2ecc71; /* Un borde izquierdo de color para destacar */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    transform: translateY(-10px) scale(1.02); /* Efecto de elevación */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Sombra más intensa al pasar el ratón */
 }
 
 .card h2 {
     font-size: 1.8em;
     font-weight: 600;
-    color: #333;
+    color: #2c3e50;
     margin-top: 0;
-    border-bottom: 3px solid #6dd5ed;
-    padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
 .card h3 {
     font-size: 1.2em;
-    font-weight: 400;
-    color: #555;
+    font-weight: 600;
+    color: #3498db;
     margin-bottom: 15px;
 }
 
 .card p, .card li {
     font-size: 1.1em;
-    line-height: 1.7;
-    color: #444;
+    line-height: 1.8; /* Más espacio entre líneas */
+    color: #34495e;
 }
 
-/* Estilo específico para la sección de recomendaciones */
+
+/* --- SECCIÓN DE RECOMENDACIONES CON ICONOS --- */
 .recommendations ul {
     list-style: none;
     padding: 0;
 }
 
 .recommendations li {
-    padding-left: 30px;
+    padding-left: 45px; /* Más espacio para el icono */
     position: relative;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
+/* Iconos para las recomendaciones */
 .recommendations li::before {
-    content: '✔';
+    font-family: "Font Awesome 5 Free"; /* (Opcional, si quisieras usar iconos) */
+    content: '✔'; /* Mantenemos el tick, pero más estilizado */
     position: absolute;
     left: 0;
-    top: 5px;
-    color: #2193b0;
+    top: 0px;
+    color: #fff;
+    background: #2ecc71;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.2em;
     font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Estilo del pie de página */
+/* Le damos otro color al icono del autobús */
+.recommendations li:last-child::before {
+    background: #3498db;
+}
+
+
+/* --- PIE DE PÁGINA --- */
 footer {
     text-align: center;
     margin-top: 40px;
     font-size: 0.9em;
-    color: #555;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
