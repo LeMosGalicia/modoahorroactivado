@@ -85,7 +85,6 @@ body {
 }
 @keyframes fadeInLetter { to { opacity: 1; } }
 
-/* Aplicamos retraso a cada letra con un bucle en JS, pero podemos dejar un genérico */
 .hero__title span span { display: inline-block; } 
 
 .gradient-text {
@@ -161,16 +160,20 @@ body {
 .slideshow {
     position: relative;
     height: 400px;
+    background-color: #000;
 }
 
 .slideshow__slide {
     display: none;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 .slideshow__slide.active {
     display: block;
+    opacity: 1;
 }
 
 .slideshow__slide img {
