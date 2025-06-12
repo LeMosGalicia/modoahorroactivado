@@ -51,9 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 plusSlides(1);
             }, 5000);
         }
-
-        prevButton.addEventListener('click', () => plusSlides(-1));
-        nextButton.addEventListener('click', () => plusSlides(1));
+        
+        if (prevButton && nextButton) {
+            prevButton.addEventListener('click', () => plusSlides(-1));
+            nextButton.addEventListener('click', () => plusSlides(1));
+        }
         
         showSlides(slideIndex);
         startAutoplay();
