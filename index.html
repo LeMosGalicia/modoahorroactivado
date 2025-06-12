@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ModoAhorroActivado | Directiva Definitiva</title>
+    <title>ModoAhorroActivado | El Proyecto Definitivo</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,51 +18,51 @@
         
         <header class="hero">
             <div class="hero-content">
-                <h1 class="main-title">Modo Ahorro <br><span class="gradient-text">Activado</span></h1>
-                <p class="subtitle">Una redefinición de la eficiencia en el transporte para un futuro sostenible.</p>
+                <h1 class="main-title">MODO AHORRO<br><span class="gradient-text">ACTIVADO</span></h1>
+                <p class="subtitle">La importancia de usar el transporte público o la bicicleta.</p>
             </div>
         </header>
 
         <main>
             <section class="intro-section">
                 <div class="intro-text">
-                    <h2>La Ecuación de la Sostenibilidad</h2>
-                    <p>Cada vehículo privado en la carretera es una variable en una compleja ecuación de consumo energético y impacto ambiental. El transporte público no es solo una alternativa; es la optimización de esa ecuación. Al consolidar rutas y pasajeros, alteramos el resultado a favor de una eficiencia colectiva.</p>
+                    <h2>La importancia de usar antes el transporte público que los coches.</h2>
+                    <p>Los coches gastan mucha energía, entre esa energía se encuentra la gasolina, la electricidad o el hidrógeno. Sin embargo, el  transporte público tiene menor impacto ambiental. Por eso es mejor ir en autobús.</p>
                 </div>
             </section>
 
-            <div class="horizontal-scroll-section">
+            <div class="horizontal-scroll-section" id="spotlight-section">
                 <div class="sticky-wrapper">
                     <div class="horizontal-title">
-                        <h2>Protocolos de Acción</h2>
+                        <h2>RECOMENDACIONES</h2>
                         <p>Desliza para explorar las directivas</p>
                     </div>
                     <div class="horizontal-scroller">
                         <div class="card">
                             <div class="card-content">
-                                <h3>Directiva 01: La Bicicleta</h3>
-                                <p>La solución de energía cinética humana. Cero emisiones, cero coste de combustible y un impacto positivo directo en la salud del operario. Es la máxima eficiencia para la movilidad de corto alcance.</p>
+                                <h3>Usar la bicicleta frecuentemente.</h3>
+                                <p>Haces deporte y cuidas más del medio ambiente. Además, es económico y rápido en distancias cortas.</p>
                                 <span class="card-number">01</span>
                             </div>
                         </div>
                         <div class="card">
                              <div class="card-content">
-                                <h3>Directiva 02: El Autobús</h3>
-                                <p>El sistema de transporte colectivo reduce drásticamente la huella de carbono por pasajero-kilómetro. Disminuye la congestión vial, la contaminación acústica y libera espacio urbano.</p>
+                                <h3>Ir en autobús.</h3>
+                                <p>Reduce la congestión del tráfico, disminuye la contaminación del aire y es más seguro que ir en un coche.</p>
                                 <span class="card-number">02</span>
                             </div>
                         </div>
                         <div class="card">
                              <div class="card-content">
-                                <h3>Directiva 03: Redes Neuronales</h3>
-                                <p>Implementación de sistemas de IA para la optimización de rutas en tiempo real, prediciendo la demanda y ajustando la frecuencia para maximizar la eficiencia de toda la flota.</p>
+                                <h3>Optimización IA</h3>
+                                <p>Sistemas que analizan el tráfico en tiempo real para ajustar las rutas de la flota de autobuses, minimizando el consumo y el tiempo de espera.</p>
                                 <span class="card-number">03</span>
                             </div>
                         </div>
                          <div class="card">
                              <div class="card-content">
-                                <h3>Directiva 04: Micromovilidad Eléctrica</h3>
-                                <p>Integración de flotas de patinetes y e-bikes como solución a la "última milla", conectando los nodos de transporte masivo con el destino final del usuario de forma limpia.</p>
+                                <h3>Micromovilidad Integrada</h3>
+                                <p>Plataformas que unifican el pago y uso de autobuses, trenes y flotas de patinetes o e-bikes para una red de transporte total.</p>
                                 <span class="card-number">04</span>
                             </div>
                         </div>
@@ -80,7 +78,8 @@
         </main>
         
         <footer>
-            <p>Proyecto de Física y Química | 11 de junio de 2025</p>
+            <p>Un Proyecto de Física y Química</p>
+            <span class="footer-date">12 de Junio de 2025</span>
         </footer>
     </div>
 
@@ -92,29 +91,36 @@
         });
         document.addEventListener('click', () => {
             cursor.classList.add("expand");
-            setTimeout(() => {
-                cursor.classList.remove("expand");
-            }, 500)
+            setTimeout(() => { cursor.classList.remove("expand"); }, 500)
         });
 
         // --- SCRIPT SCROLL HORIZONTAL ---
         const stickyWrapper = document.querySelector('.sticky-wrapper');
         const horizontalScroller = document.querySelector('.horizontal-scroller');
+        if (stickyWrapper && horizontalScroller) {
+            const scrollWidth = horizontalScroller.scrollWidth - window.innerWidth;
+            window.addEventListener('scroll', () => {
+                const stickyTop = stickyWrapper.parentElement.offsetTop;
+                const stickyBottom = stickyTop + stickyWrapper.offsetHeight - window.innerHeight;
+                if (window.scrollY > stickyTop && window.scrollY < stickyBottom) {
+                    let scrollPercentage = (window.scrollY - stickyTop) / (stickyWrapper.offsetHeight - window.innerHeight);
+                    let scrollPosition = scrollPercentage * scrollWidth;
+                    horizontalScroller.style.transform = `translateX(-${scrollPosition}px)`;
+                }
+            });
+        }
 
-        // Calcula cuánto se puede desplazar horizontalmente
-        const scrollWidth = horizontalScroller.scrollWidth - window.innerWidth;
-
-        // Anima el scroll horizontal basándose en el scroll vertical de su contenedor
-        window.addEventListener('scroll', () => {
-            const stickyTop = stickyWrapper.parentElement.offsetTop;
-            const stickyBottom = stickyTop + stickyWrapper.offsetHeight - window.innerHeight;
-
-            if (window.scrollY > stickyTop && window.scrollY < stickyBottom) {
-                let scrollPercentage = (window.scrollY - stickyTop) / (stickyWrapper.offsetHeight - window.innerHeight);
-                let scrollPosition = scrollPercentage * scrollWidth;
-                horizontalScroller.style.transform = `translateX(-${scrollPosition}px)`;
-            }
-        });
+        // --- SCRIPT EFECTO SPOTLIGHT ---
+        const spotlightSection = document.getElementById('spotlight-section');
+        if (spotlightSection) {
+            spotlightSection.addEventListener('mousemove', e => {
+                const rect = spotlightSection.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                spotlightSection.style.setProperty('--mouse-x', `${x}px`);
+                spotlightSection.style.setProperty('--mouse-y', `${y}px`);
+            });
+        }
     </script>
 </body>
 </html>
